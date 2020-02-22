@@ -22,22 +22,23 @@ String getCommand() {
 
 void action(String aCommand) {
   Serial.println(aCommand);
-  if(aCommand == "OPEN") {
+
+  ventBlue.write('R');
+  
+  if(aCommand == "O") {
     commandOverride = true;
     overrideStamp = millis();
     openVent();
   }
-  else if(aCommand == "CLOSE") {
+  else if(aCommand == "C") {
     closeVent();
   }
-  else if(aCommand == "CUT") {
+  else if(aCommand == "T") {
     cutResistorOn();
     Serial.println("Cutting...");
   }
-  else if(aCommand == "PING") {
-    ventBlue.write("PiNG");
+  else if(aCommand == "P") {
+    ventBlue.write(servoFeedback);
   }
-
-  ventBlue.write("Received");
   
 }

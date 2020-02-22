@@ -15,10 +15,11 @@
 
 #define BLUE_INTERVAL 100
 #define SEQUENCE_INTERVAL 1000
-#define CUT_INTERVAL 45000
+#define CUT_INTERVAL 30000
 #define AUTO_INTERVAL 300000
 #define OPEN_INTERVAL 60000
 #define OVERRIDE_INTERVAL 600000
+#define TERMINATE_INTERVAL 9000000
 
 // timers
 unsigned long blueStamp = 0;
@@ -110,4 +111,10 @@ void loop() {
       }
     }
   }
+
+  // cut after 2.5 hours
+  if (millis() > TERMINATE_INTERVAL) {
+    cutResistorOn();
+  }
+  
 }
